@@ -21,17 +21,22 @@ export const getRandomExpression = () => {
   return expression;
 };
 
+export const getRandomDivisor = () => {
+  const firstNum = getRandomNumber();
+  const secondNum = getRandomNumber();
+
+  return `${firstNum} ${secondNum}`;
+};
+
 // ANSWERS
 export const getAnswer = (num) => {
   const userAnswer = readlineSync.question(`Question: ${num}\nYour answer: `);
   return userAnswer;
 };
 
-export const getCorrectAnswer = (num) => {
-  if (Number.isInteger(num)) {
-    return num % 2 === 0 ? 'yes' : 'no';
-  }
+export const getCorrectRandomAnswer = num => (num % 2 === 0 ? 'yes' : 'no');
 
+export const getCorrectExpressionAnswer = (num) => {
   let index = 0;
   let leftSide = '';
   let rightSide = '';
@@ -65,6 +70,37 @@ export const getCorrectAnswer = (num) => {
   }
 
   return result;
+};
+
+export const getCorrectDivisorAnswer = (num) => {
+  let index = 0;
+  let firstNum = '';
+  let secondNum = '';
+
+  while (index < num.length / 2) {
+    if (num[index] === ' ') {
+      firstNum = num.substring(0, index);
+    }
+    index += 1;
+  }
+
+  index = num.length - 1;
+  while (index > 0) {
+    if (num[index] === ' ') {
+      secondNum = num.substring(index + 1);
+    }
+    index -= 1;
+  }
+
+  let smallestDivisor = firstNum > secondNum ? secondNum : firstNum;
+
+  while (smallestDivisor > 1) {
+    if ((firstNum % smallestDivisor === 0) && (secondNum % smallestDivisor === 0)) {
+      return smallestDivisor.toString();
+    }
+    smallestDivisor -= 1;
+  }
+  return '1';
 };
 
 export const checkAnswers = (answer, correct, func, counter = 0) => {

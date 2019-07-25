@@ -7,3 +7,6 @@
 
 ##### This is the way to install the package and run brain-calc:
 [![asciicast](https://asciinema.org/a/kL7HPU1f1EAaMnzd0ndPtqHNB.svg)](https://asciinema.org/a/kL7HPU1f1EAaMnzd0ndPtqHNB)
+
+##### This is the way to install the package and run brain-gcd:
+[![asciicast](https://asciinema.org/a/XrmuAjN7QLo3xQfxI5ehy6pW9.svg)](https://asciinema.org/a/XrmuAjN7QLo3xQfxI5ehy6pW9)

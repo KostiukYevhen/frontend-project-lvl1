@@ -5,4 +5,4 @@ index.greeting();
 console.log('What is the result of the expression?\n');
 index.getName();
 
-index.checkAnswers(index.getAnswer, index.getCorrectAnswer, index.getRandomExpression);
+index.checkAnswers(index.getAnswer, index.getCorrectExpressionAnswer, index.getRandomExpression);
