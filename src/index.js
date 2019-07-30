@@ -28,7 +28,27 @@ export const getRandomDivisor = () => {
   return `${firstNum} ${secondNum}`;
 };
 
-// ANSWERS
+export const getRandomProgression = () => {
+  let start = Math.round(Math.random() * (80 - 10) + 10);
+  const randomNum = Math.round(Math.random() * 8);
+  const step = 2;
+  let result = '';
+  let index = 0;
+
+  while (index < 10) {
+    if (index === randomNum) {
+      result += '.. ';
+    } else {
+      result += `${start + step} `;
+    }
+    start += step;
+    index += 1;
+  }
+
+  return result;
+};
+
+// GET CORRECT ANSWERS
 export const getAnswer = (num) => {
   const userAnswer = readlineSync.question(`Question: ${num}\nYour answer: `);
   return userAnswer;
@@ -41,22 +61,18 @@ export const getCorrectExpressionAnswer = (num) => {
   let leftSide = '';
   let rightSide = '';
   let result = '';
-  while (index < num.length / 2) {
-    if (num[index] === ' ') {
+
+  while (index < num.length) {
+    if (num[index] === ' ' && leftSide === '') {
       leftSide = num.substring(0, index);
+    }
+    if (num[index] === ' ') {
+      rightSide = num.substring(index);
     }
     index += 1;
   }
-  index = num.length - 1;
-  while (index > (num.length - 1) / 2) {
-    if (num[index] === ' ') {
-      rightSide = num.substring(index + 1);
-    }
-    index -= 1;
-  }
 
-  index = 0;
-  while (index < num.length - 1) {
+  while (index > 0) {
     if (num[index] === '+') {
       result += +leftSide + +rightSide;
     }
@@ -66,7 +82,7 @@ export const getCorrectExpressionAnswer = (num) => {
     if (num[index] === '*') {
       result += +leftSide * +rightSide;
     }
-    index += 1;
+    index -= 1;
   }
 
   return result;
@@ -77,19 +93,14 @@ export const getCorrectDivisorAnswer = (num) => {
   let firstNum = '';
   let secondNum = '';
 
-  while (index < num.length / 2) {
-    if (num[index] === ' ') {
+  while (index < num.length) {
+    if (num[index] === ' ' && firstNum === '') {
       firstNum = num.substring(0, index);
     }
-    index += 1;
-  }
-
-  index = num.length - 1;
-  while (index > 0) {
     if (num[index] === ' ') {
       secondNum = num.substring(index + 1);
     }
-    index -= 1;
+    index += 1;
   }
 
   let smallestDivisor = firstNum > secondNum ? secondNum : firstNum;
@@ -102,6 +113,22 @@ export const getCorrectDivisorAnswer = (num) => {
   }
   return '1';
 };
+
+export const getCorrectProgressionAnswer = (str) => {
+  let index = 0;
+  let result = '';
+  while (index < str.length - 1) {
+    if (str.substring(index, index + 2) === '..') {
+      result += str.substring(index + 2, index + 5);
+    }
+    index += 1;
+  }
+
+  result -= 2;
+  return `${result}`;
+};
+
+// CHECK ANSWERS
 
 export const checkAnswers = (answer, correct, func, counter = 0) => {
   const randomValue = func();

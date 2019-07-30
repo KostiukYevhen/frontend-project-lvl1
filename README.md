@@ -10,3 +10,6 @@
 
 ##### This is the way to install the package and run brain-gcd:
 [![asciicast](https://asciinema.org/a/XrmuAjN7QLo3xQfxI5ehy6pW9.svg)](https://asciinema.org/a/XrmuAjN7QLo3xQfxI5ehy6pW9)
+
+##### This is the way to install the package and run brain-progression:
+[![asciicast](https://asciinema.org/a/RTzkxKHeAU925Oeg5jlRYxs4z.svg)](https://asciinema.org/a/RTzkxKHeAU925Oeg5jlRYxs4z)
