@@ -13,3 +13,6 @@
 
 ##### This is the way to install the package and run brain-progression:
 [![asciicast](https://asciinema.org/a/RTzkxKHeAU925Oeg5jlRYxs4z.svg)](https://asciinema.org/a/RTzkxKHeAU925Oeg5jlRYxs4z)
+
+##### This is the way to install the package and run brain-prime:
+[![asciicast](https://asciinema.org/a/ItQny8gyEWBQmOvC7cf6qlqy8.svg)](https://asciinema.org/a/ItQny8gyEWBQmOvC7cf6qlqy8)

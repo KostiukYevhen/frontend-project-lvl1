@@ -128,6 +128,23 @@ export const getCorrectProgressionAnswer = (str) => {
   return `${result}`;
 };
 
+export const getCorrectPrimeAnswer = (num) => {
+  let index = 2;
+  if (num === 1) {
+    return 'yes';
+  }
+  while (index <= num) {
+    if (num % index === 0) {
+      if (index === num) {
+        return 'yes';
+      }
+      return 'no';
+    }
+    index += 1;
+  }
+  return 'no';
+};
+
 // CHECK ANSWERS
 
 export const checkAnswers = (answer, correct, func, counter = 0) => {
