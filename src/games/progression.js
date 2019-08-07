@@ -1,6 +1,9 @@
 #!/usr/bin/env node
+import * as index from '..';
 
-export const getRandomProgress = () => {
+const greeting = 'What number is missing in the progression?\n';
+
+const getRandomProgress = () => {
   let start = Math.round(Math.random() * (80 - 10) + 10);
   const randomNum = Math.round(Math.random() * 8);
   const step = 2;
@@ -20,7 +23,7 @@ export const getRandomProgress = () => {
   return result;
 };
 
-export const getCorrectProgressAnswer = (str) => {
+const getCorrectProgressAnswer = (str) => {
   let strIndex = 0;
   let result = '';
   while (strIndex < str.length - 1) {
@@ -32,4 +35,8 @@ export const getCorrectProgressAnswer = (str) => {
 
   result -= 2;
   return `${result}`;
+};
+
+export default () => {
+  index.checkAnswers(index.getAnswer, getCorrectProgressAnswer, getRandomProgress, greeting);
 };

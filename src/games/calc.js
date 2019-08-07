@@ -1,7 +1,9 @@
 #!/usr/bin/env node
-import * as index from '../index';
+import * as index from '..';
 
-export const getRandomExpression = () => {
+const greeting = 'What is the result of the expression?\n';
+
+const getRandomExpression = () => {
   const operators = ['+', '-', '*'];
   const operatorIndex = Math.round(Math.random() * 2);
 
@@ -10,7 +12,7 @@ export const getRandomExpression = () => {
   return expression;
 };
 
-export const getCorrectExpressionAnswer = (num) => {
+const getCorrectExpressionAnswer = (num) => {
   let numIndex = 0;
   let leftSide = '';
   let rightSide = '';
@@ -40,4 +42,8 @@ export const getCorrectExpressionAnswer = (num) => {
   }
 
   return result;
+};
+
+export default () => {
+  index.checkAnswers(index.getAnswer, getCorrectExpressionAnswer, getRandomExpression, greeting);
 };

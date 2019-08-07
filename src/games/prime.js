@@ -1,6 +1,9 @@
 #!/usr/bin/env node
+import * as index from '..';
 
-export default (num) => {
+const greeting = 'Answer "yes" if given number is prime. Otherwise answer "no".\n';
+
+const getCorrectPrimeAnswer = (num) => {
   let numIndex = 2;
   if (num === 1) {
     return 'yes';
@@ -15,4 +18,8 @@ export default (num) => {
     numIndex += 1;
   }
   return 'no';
+};
+
+export default () => {
+  index.checkAnswers(index.getAnswer, getCorrectPrimeAnswer, index.getRandomNumber, greeting);
 };
