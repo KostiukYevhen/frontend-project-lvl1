@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import * as index from '..';
+import { checkAnswers, getAnswer, getRandomNumber } from '..';
 
 const greeting = 'Answer "yes" if given number is prime. Otherwise answer "no".\n';
 
@@ -21,5 +21,5 @@ const getCorrectPrimeAnswer = (num) => {
 };
 
 export default () => {
-  index.checkAnswers(index.getAnswer, getCorrectPrimeAnswer, index.getRandomNumber, greeting);
+  checkAnswers(getAnswer, getCorrectPrimeAnswer, getRandomNumber, greeting);
 };

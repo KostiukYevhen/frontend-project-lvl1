@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import * as index from '..';
+import { checkAnswers, getAnswer, getRandomNumber } from '..';
 
 const greeting = 'Find the greatest common divisor of given numbers.\n';
 
 const getRandomDivisor = () => {
-  const firstNum = index.getRandomNumber();
-  const secondNum = index.getRandomNumber();
+  const firstNum = getRandomNumber();
+  const secondNum = getRandomNumber();
 
   return `${firstNum} ${secondNum}`;
 };
@@ -37,5 +37,5 @@ const getCorrectDivisorAnswer = (num) => {
 };
 
 export default () => {
-  index.checkAnswers(index.getAnswer, getCorrectDivisorAnswer, getRandomDivisor, greeting);
+  checkAnswers(getAnswer, getCorrectDivisorAnswer, getRandomDivisor, greeting);
 };

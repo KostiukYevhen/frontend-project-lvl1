@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import * as index from '..';
+import { checkAnswers, getAnswer } from '..';
 
 const greeting = 'What number is missing in the progression?\n';
 
@@ -38,5 +38,5 @@ const getCorrectProgressAnswer = (str) => {
 };
 
 export default () => {
-  index.checkAnswers(index.getAnswer, getCorrectProgressAnswer, getRandomProgress, greeting);
+  checkAnswers(getAnswer, getCorrectProgressAnswer, getRandomProgress, greeting);
 };

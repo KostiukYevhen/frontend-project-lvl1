@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import * as index from '..';
+import { checkAnswers, getAnswer, getRandomNumber } from '..';
 
 const greeting = 'What is the result of the expression?\n';
 
@@ -7,7 +7,7 @@ const getRandomExpression = () => {
   const operators = ['+', '-', '*'];
   const operatorIndex = Math.round(Math.random() * 2);
 
-  const expression = `${index.getRandomNumber()} ${operators[operatorIndex]} ${index.getRandomNumber()}`;
+  const expression = `${getRandomNumber()} ${operators[operatorIndex]} ${getRandomNumber()}`;
 
   return expression;
 };
@@ -45,5 +45,5 @@ const getCorrectExpressionAnswer = (num) => {
 };
 
 export default () => {
-  index.checkAnswers(index.getAnswer, getCorrectExpressionAnswer, getRandomExpression, greeting);
+  checkAnswers(getAnswer, getCorrectExpressionAnswer, getRandomExpression, greeting);
 };
