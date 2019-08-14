@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { checkAnswers, getAnswer } from '..';
+import { checkAnswers } from '..';
 
 const greeting = 'What number is missing in the progression?\n';
 
@@ -38,5 +38,5 @@ const getCorrectProgressAnswer = (str) => {
 };
 
 export default () => {
-  checkAnswers(getAnswer, getCorrectProgressAnswer, getRandomProgress, greeting);
+  checkAnswers(getCorrectProgressAnswer, getRandomProgress, greeting);
 };

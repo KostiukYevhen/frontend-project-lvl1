@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import { checkAnswers, getAnswer, getRandomNumber } from '..';
+import { checkAnswers } from '..';
+import getRandomInteger from '../utils';
 
 const greeting = 'Answer "yes" if number even otherwise answer "no".\n';
-
-const getCorrectRandomAnswer = num => (num % 2 === 0 ? 'yes' : 'no');
+const isEven = num => num % 2 === 0;
+const getCorrectRandomAnswer = num => (isEven(num) ? 'yes' : 'no');
 
 export default () => {
-  checkAnswers(getAnswer, getCorrectRandomAnswer, getRandomNumber, greeting);
+  checkAnswers(getCorrectRandomAnswer, getRandomInteger, greeting);
 };

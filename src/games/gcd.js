@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { checkAnswers, getAnswer, getRandomNumber } from '..';
+import { checkAnswers, getRandomNumber } from '..';
 
 const greeting = 'Find the greatest common divisor of given numbers.\n';
 
@@ -37,5 +37,5 @@ const getCorrectDivisorAnswer = (num) => {
 };
 
 export default () => {
-  checkAnswers(getAnswer, getCorrectDivisorAnswer, getRandomDivisor, greeting);
+  checkAnswers(getCorrectDivisorAnswer, getRandomDivisor, greeting);
 };

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { checkAnswers, getAnswer, getRandomNumber } from '..';
+import { checkAnswers, getRandomNumber } from '..';
 
 const greeting = 'What is the result of the expression?\n';
 
@@ -45,5 +45,5 @@ const getCorrectExpressionAnswer = (num) => {
 };
 
 export default () => {
-  checkAnswers(getAnswer, getCorrectExpressionAnswer, getRandomExpression, greeting);
+  checkAnswers(getCorrectExpressionAnswer, getRandomExpression, greeting);
 };
