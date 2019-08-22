@@ -1,11 +1,18 @@
 #!/usr/bin/env node
-import { checkAnswers } from '..';
-import getRandomInteger from '../utils';
+import { cons } from '@hexlet/pairs';
+import checkAnswers from '..';
+import getRandomInt from '../utils';
 
-const greeting = 'Answer "yes" if number even otherwise answer "no".\n';
+const description = 'Answer "yes" if number even otherwise answer "no".';
 const isEven = num => num % 2 === 0;
-const getCorrectRandomAnswer = num => (isEven(num) ? 'yes' : 'no');
+
+const getCorrectAnswer = () => {
+  const question = getRandomInt();
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
+  const pair = cons(question, correctAnswer);
+  return pair;
+};
 
 export default () => {
-  checkAnswers(getCorrectRandomAnswer, getRandomInteger, greeting);
+  checkAnswers(description, getCorrectAnswer);
 };

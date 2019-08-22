@@ -1,25 +1,28 @@
 #!/usr/bin/env node
-import { checkAnswers, getRandomNumber } from '..';
+import { cons } from '@hexlet/pairs';
+import checkAnswers from '..';
+import getRandomInt from '../utils';
 
-const greeting = 'Answer "yes" if given number is prime. Otherwise answer "no".\n';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const getCorrectPrimeAnswer = (num) => {
-  let numIndex = 2;
-  if (num === 1) {
-    return 'yes';
+const getCorrectAnswer = () => {
+  const randomInt = getRandomInt();
+  let counter = 2;
+  if (randomInt === 1) {
+    return cons(randomInt, 'yes');
   }
-  while (numIndex <= num) {
-    if (num % numIndex === 0) {
-      if (numIndex === num) {
-        return 'yes';
+  while (counter <= randomInt) {
+    if (randomInt % counter === 0) {
+      if (counter === randomInt) {
+        return cons(randomInt, 'yes');
       }
-      return 'no';
+      return cons(randomInt, 'no');
     }
-    numIndex += 1;
+    counter += 1;
   }
-  return 'no';
+  return cons(randomInt, 'no');
 };
 
 export default () => {
-  checkAnswers(getCorrectPrimeAnswer, getRandomNumber, greeting);
+  checkAnswers(description, getCorrectAnswer);
 };

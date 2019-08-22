@@ -1,41 +1,32 @@
 #!/usr/bin/env node
-import { checkAnswers, getRandomNumber } from '..';
+import { cons, car, cdr } from '@hexlet/pairs';
+import checkAnswers from '..';
+import getRandomInt from '../utils';
 
-const greeting = 'Find the greatest common divisor of given numbers.\n';
+const description = 'Find the greatest common divisor of given numbers.';
 
 const getRandomDivisor = () => {
-  const firstNum = getRandomNumber();
-  const secondNum = getRandomNumber();
-
-  return `${firstNum} ${secondNum}`;
+  const firstNum = getRandomInt();
+  const secondNum = getRandomInt();
+  const getDivisors = cons(firstNum, secondNum);
+  return getDivisors;
 };
 
-const getCorrectDivisorAnswer = (num) => {
-  let numIndex = 0;
-  let firstNum = '';
-  let secondNum = '';
-
-  while (numIndex < num.length) {
-    if (num[numIndex] === ' ' && firstNum === '') {
-      firstNum = num.substring(0, numIndex);
-    }
-    if (num[numIndex] === ' ') {
-      secondNum = num.substring(numIndex + 1);
-    }
-    numIndex += 1;
-  }
-
+const getCorrectAnswer = () => {
+  const firstNum = car(getRandomDivisor());
+  const secondNum = cdr(getRandomDivisor());
+  const question = `${firstNum} ${secondNum}`;
   let smallestDivisor = firstNum > secondNum ? secondNum : firstNum;
 
   while (smallestDivisor > 1) {
     if ((firstNum % smallestDivisor === 0) && (secondNum % smallestDivisor === 0)) {
-      return smallestDivisor.toString();
+      return cons(question, smallestDivisor);
     }
     smallestDivisor -= 1;
   }
-  return '1';
+  return cons(question, smallestDivisor);
 };
 
 export default () => {
-  checkAnswers(getCorrectDivisorAnswer, getRandomDivisor, greeting);
+  checkAnswers(description, getCorrectAnswer);
 };

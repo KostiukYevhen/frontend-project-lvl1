@@ -1,37 +1,38 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from '@hexlet/pairs';
 
 const greeting = (description) => {
   console.log('Welcome to the Brain Games!');
   console.log(description);
-  const userName = readlineSync.question('May I have your name? ');
+  const userName = readlineSync.question('\nMay I have your name? ');
   console.log(`Hello, ${userName}!\n`);
   return userName;
 };
 
-const getAnswer = (num) => {
-  const userAnswer = readlineSync.question(`Question: ${num}\nYour answer: `);
-  return userAnswer;
+const startStage = (answers) => {
+  console.log(`Question: ${car(answers)}`);
+  const correctAnswer = String(cdr(answers));
+  const userAnswer = readlineSync.question('Your answer: ');
+  const isCorrect = correctAnswer === userAnswer;
+  const output = isCorrect ? 'Correct!' : `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
+  console.log(output);
+  return isCorrect;
 };
 
-export const checkAnswers = (correct, func, description) => {
+export default (description, stage) => {
   const userName = greeting(description);
   let startCount = 0;
   const endCount = 3;
-
-  while (startCount < endCount) {
-    const randomValue = func();
-    const userAnswer = getAnswer(randomValue);
-    const correctAnswer = correct(randomValue);
-    if (correctAnswer === userAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      return console.log(`Let's try again, ${userName}!`);
+  const counter = (start) => {
+    if (start === endCount) {
+      return console.log(`Congratulations, ${userName}!`);
+    }
+    const isCorrect = startStage(stage());
+    if (isCorrect) {
+      return counter(start + 1);
     }
     startCount += 1;
-  }
-
-  return console.log(`Congratulations, ${userName}!`);
+    return console.log(`Let's try again, ${userName}!`);
+  };
+  return counter(startCount);
 };
-
-export default checkAnswers;

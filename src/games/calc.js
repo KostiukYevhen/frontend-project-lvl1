@@ -1,49 +1,41 @@
 #!/usr/bin/env node
-import { checkAnswers, getRandomNumber } from '..';
+import { cons, car, cdr } from '@hexlet/pairs';
+import checkAnswers from '..';
+import getRandomInt from '../utils';
 
-const greeting = 'What is the result of the expression?\n';
+const description = 'What is the result of the expression?';
 
 const getRandomExpression = () => {
   const operators = ['+', '-', '*'];
   const operatorIndex = Math.round(Math.random() * 2);
-
-  const expression = `${getRandomNumber()} ${operators[operatorIndex]} ${getRandomNumber()}`;
-
+  const expression = cons(getRandomInt(), cons(operators[operatorIndex], getRandomInt()));
   return expression;
 };
 
-const getCorrectExpressionAnswer = (num) => {
-  let numIndex = 0;
-  let leftSide = '';
-  let rightSide = '';
-  let result = '';
+const getCorrectAnswer = () => {
+  const expression = getRandomExpression();
+  const leftSide = car(expression);
+  const rightSide = cdr(cdr(expression));
+  const operator = car(cdr(expression));
+  const question = `${leftSide} ${operator} ${rightSide}`;
+  let correctAnswer = '';
 
-  while (numIndex < num.length) {
-    if (num[numIndex] === ' ' && leftSide === '') {
-      leftSide = num.substring(0, numIndex);
-    }
-    if (num[numIndex] === ' ') {
-      rightSide = num.substring(numIndex);
-    }
-    numIndex += 1;
+  switch (operator) {
+    case '+':
+      correctAnswer = leftSide + rightSide;
+      break;
+    case '-':
+      correctAnswer = leftSide - rightSide;
+      break;
+    case '*':
+      correctAnswer = leftSide * rightSide;
+      break;
+    default:
+      break;
   }
-
-  while (numIndex > 0) {
-    if (num[numIndex] === '+') {
-      result += +leftSide + +rightSide;
-    }
-    if (num[numIndex] === '-') {
-      result += +leftSide - +rightSide;
-    }
-    if (num[numIndex] === '*') {
-      result += +leftSide * +rightSide;
-    }
-    numIndex -= 1;
-  }
-
-  return result;
+  return cons(question, correctAnswer);
 };
 
 export default () => {
-  checkAnswers(getCorrectExpressionAnswer, getRandomExpression, greeting);
+  checkAnswers(description, getCorrectAnswer);
 };
