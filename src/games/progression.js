@@ -1,26 +1,26 @@
-#!/usr/bin/env node
 import { cons } from '@hexlet/pairs';
 import checkAnswers from '..';
-import getRandomInt from '../utils';
+import getRandomInteger from '../utils';
 
 const description = 'What number is missing in the progression?';
 
 const getRandomProgress = () => {
-  let randomInt = getRandomInt();
-  const step = getRandomInt();
-  const randomPosition = getRandomInt(1, 10);
-  let correctAnswer = 0;
+  let startProgressionInt = getRandomInteger();
+  const progressionStep = getRandomInteger();
+  const hiddenElementPosition = getRandomInteger(1, 10);
+  const progressionLength = 10;
   let question = '';
   let counter = 1;
+  let correctAnswer;
 
-  while (counter <= 10) {
-    if (counter === randomPosition) {
-      correctAnswer = randomInt + step;
+  while (counter <= progressionLength) {
+    if (counter === hiddenElementPosition) {
+      correctAnswer = startProgressionInt + progressionStep;
       question += '.. ';
     } else {
-      question += `${randomInt + step} `;
+      question += `${startProgressionInt + progressionStep} `;
     }
-    randomInt += step;
+    startProgressionInt += progressionStep;
     counter += 1;
   }
   return cons(question, correctAnswer);

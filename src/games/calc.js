@@ -1,19 +1,13 @@
-#!/usr/bin/env node
 import { cons, car, cdr } from '@hexlet/pairs';
 import checkAnswers from '..';
-import getRandomInt from '../utils';
+import getRandomInteger from '../utils';
 
 const description = 'What is the result of the expression?';
 
-const getRandomExpression = () => {
-  const operators = ['+', '-', '*'];
-  const operatorIndex = Math.round(Math.random() * 2);
-  const expression = cons(getRandomInt(), cons(operators[operatorIndex], getRandomInt()));
-  return expression;
-};
-
 const getCorrectAnswer = () => {
-  const expression = getRandomExpression();
+  const operators = ['+', '-', '*'];
+  const operatorIndex = getRandomInteger(0, operators.length - 1);
+  const expression = cons(getRandomInteger(), cons(operators[operatorIndex], getRandomInteger()));
   const leftSide = car(expression);
   const rightSide = cdr(cdr(expression));
   const operator = car(cdr(expression));
