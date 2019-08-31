@@ -5,17 +5,16 @@ import getRandomInteger from '../utils';
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
-  let divisor = 2;
-  if (num === 1) {
+  if (num <= 1) {
+    return false;
+  }
+  if (num <= 3) {
     return true;
   }
-  while (divisor <= num) {
-    if (num % divisor === 0) {
-      return divisor === num;
-    }
-    divisor += 1;
+  if (num % 2 === 0 || num % 3 === 0) {
+    return false;
   }
-  return false;
+  return true;
 };
 
 const getCorrectAnswer = () => {

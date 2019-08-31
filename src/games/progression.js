@@ -5,25 +5,23 @@ import getRandomInteger from '../utils';
 const description = 'What number is missing in the progression?';
 
 const getRandomProgress = () => {
-  let startProgressionInt = getRandomInteger();
+  const startProgressionInt = getRandomInteger();
   const progressionStep = getRandomInteger();
-  const hiddenElementPosition = getRandomInteger(1, 10);
   const progressionLength = 10;
+  const hiddenElementPosition = getRandomInteger(1, progressionLength);
   let question = '';
-  let counter = 1;
   let correctAnswer;
 
-  while (counter <= progressionLength) {
-    if (counter === hiddenElementPosition) {
-      correctAnswer = startProgressionInt + progressionStep;
+  for (let i = 0; i < progressionLength; i += 1) {
+    if (i === hiddenElementPosition) {
+      correctAnswer = startProgressionInt + progressionStep * i;
       question += '.. ';
     } else {
-      question += `${startProgressionInt + progressionStep} `;
+      question += `${startProgressionInt + progressionStep * i} `;
     }
-    startProgressionInt += progressionStep;
-    counter += 1;
   }
-  return cons(question, correctAnswer);
+
+  return cons(question.trim(), correctAnswer);
 };
 
 export default () => {

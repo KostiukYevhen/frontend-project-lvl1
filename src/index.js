@@ -21,18 +21,19 @@ const startStage = (answers) => {
 
 export default (description, stage) => {
   const userName = greeting(description);
-  let startCount = 0;
-  const endCount = 3;
+  const currentRound = 0;
+  const finalRound = 3;
   const counter = (start) => {
-    if (start === endCount) {
-      return console.log(`Congratulations, ${userName}!`);
+    if (start === finalRound) {
+      console.log(`Congratulations, ${userName}!`);
+      return;
     }
     const isCorrect = startStage(stage());
     if (isCorrect) {
-      return counter(start + 1);
+      counter(start + 1);
+    } else {
+      console.log(`Let's try again, ${userName}!`);
     }
-    startCount += 1;
-    return console.log(`Let's try again, ${userName}!`);
   };
-  return counter(startCount);
+  counter(currentRound);
 };
