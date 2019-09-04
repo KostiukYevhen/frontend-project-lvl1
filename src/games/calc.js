@@ -1,4 +1,4 @@
-import { cons, car, cdr } from '@hexlet/pairs';
+import { cons } from '@hexlet/pairs';
 import checkAnswers from '..';
 import getRandomInteger from '../utils';
 
@@ -7,12 +7,11 @@ const description = 'What is the result of the expression?';
 const getCorrectAnswer = () => {
   const operators = ['+', '-', '*'];
   const operatorIndex = getRandomInteger(0, operators.length - 1);
-  const expression = cons(getRandomInteger(), cons(operators[operatorIndex], getRandomInteger()));
-  const leftSide = car(expression);
-  const rightSide = cdr(cdr(expression));
-  const operator = car(cdr(expression));
+  const leftSide = getRandomInteger();
+  const rightSide = getRandomInteger();
+  const operator = operators[operatorIndex];
   const question = `${leftSide} ${operator} ${rightSide}`;
-  let correctAnswer = '';
+  let correctAnswer;
 
   switch (operator) {
     case '+':

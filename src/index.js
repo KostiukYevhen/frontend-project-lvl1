@@ -9,11 +9,10 @@ const greeting = (description) => {
   return userName;
 };
 
-const startStage = (answers) => {
-  console.log(`Question: ${car(answers)}`);
-  const correctAnswer = String(cdr(answers));
+const startStage = (question, correctAnswer) => {
+  console.log(`Question: ${question}`);
   const userAnswer = readlineSync.question('Your answer: ');
-  const isCorrect = correctAnswer === userAnswer;
+  const isCorrect = String(correctAnswer) === userAnswer;
   const output = isCorrect ? 'Correct!' : `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
   console.log(output);
   return isCorrect;
@@ -21,19 +20,22 @@ const startStage = (answers) => {
 
 export default (description, stage) => {
   const userName = greeting(description);
-  const currentRound = 0;
+  const startRound = 0;
   const finalRound = 3;
-  const counter = (start) => {
-    if (start === finalRound) {
+  const counter = (currentRound) => {
+    if (currentRound === finalRound) {
       console.log(`Congratulations, ${userName}!`);
       return;
     }
-    const isCorrect = startStage(stage());
+    const gameData = stage();
+    const question = car(gameData);
+    const correctAnswer = cdr(gameData);
+    const isCorrect = startStage(question, correctAnswer);
     if (isCorrect) {
-      counter(start + 1);
+      counter(currentRound + 1);
     } else {
       console.log(`Let's try again, ${userName}!`);
     }
   };
-  counter(currentRound);
+  counter(startRound);
 };

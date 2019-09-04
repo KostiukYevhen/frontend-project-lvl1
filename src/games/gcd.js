@@ -5,15 +5,15 @@ import getRandomInteger from '../utils';
 const description = 'Find the greatest common divisor of given numbers.';
 
 const findGcd = (num1, num2) => {
-  let smallestDivisor = Math.min(num1, num2);
+  let biggestDivisor = Math.min(num1, num2);
 
-  while (smallestDivisor > 1) {
-    if ((num1 % smallestDivisor === 0) && (num2 % smallestDivisor === 0)) {
-      return smallestDivisor;
+  while (biggestDivisor > 1) {
+    if ((num1 % biggestDivisor === 0) && (num2 % biggestDivisor === 0)) {
+      return biggestDivisor;
     }
-    smallestDivisor -= 1;
+    biggestDivisor -= 1;
   }
-  return smallestDivisor;
+  return biggestDivisor;
 };
 
 const getCorrectAnswer = () => {

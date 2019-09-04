@@ -8,13 +8,12 @@ const getRandomProgress = () => {
   const startProgressionInt = getRandomInteger();
   const progressionStep = getRandomInteger();
   const progressionLength = 10;
-  const hiddenElementPosition = getRandomInteger(1, progressionLength);
+  const hiddenElementPosition = getRandomInteger(0, progressionLength - 1);
+  const correctAnswer = startProgressionInt + progressionStep * hiddenElementPosition;
   let question = '';
-  let correctAnswer;
 
   for (let i = 0; i < progressionLength; i += 1) {
     if (i === hiddenElementPosition) {
-      correctAnswer = startProgressionInt + progressionStep * i;
       question += '.. ';
     } else {
       question += `${startProgressionInt + progressionStep * i} `;
