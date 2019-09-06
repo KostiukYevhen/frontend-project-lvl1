@@ -1,6 +1,9 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
+const startRound = 0;
+const finalRound = 3;
+
 const greeting = (description) => {
   console.log('Welcome to the Brain Games!');
   console.log(description);
@@ -20,8 +23,6 @@ const startStage = (question, correctAnswer) => {
 
 export default (description, stage) => {
   const userName = greeting(description);
-  const startRound = 0;
-  const finalRound = 3;
   const counter = (currentRound) => {
     if (currentRound === finalRound) {
       console.log(`Congratulations, ${userName}!`);
