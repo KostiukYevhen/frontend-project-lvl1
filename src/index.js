@@ -12,7 +12,7 @@ const greeting = (description) => {
 const startStage = (question, correctAnswer) => {
   console.log(`Question: ${question}`);
   const userAnswer = readlineSync.question('Your answer: ');
-  const isCorrect = String(correctAnswer) === userAnswer;
+  const isCorrect = correctAnswer === userAnswer;
   const output = isCorrect ? 'Correct!' : `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`;
   console.log(output);
   return isCorrect;

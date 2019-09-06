@@ -26,7 +26,7 @@ const getCorrectAnswer = () => {
     default:
       break;
   }
-  return cons(question, correctAnswer);
+  return cons(question, String(correctAnswer));
 };
 
 export default () => {

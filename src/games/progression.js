@@ -9,7 +9,7 @@ const getRandomProgress = () => {
   const progressionStep = getRandomInteger();
   const progressionLength = 10;
   const hiddenElementPosition = getRandomInteger(0, progressionLength - 1);
-  const correctAnswer = startProgressionInt + progressionStep * hiddenElementPosition;
+  const correctAnswer = String(startProgressionInt + progressionStep * hiddenElementPosition);
   let question = '';
 
   for (let i = 0; i < progressionLength; i += 1) {

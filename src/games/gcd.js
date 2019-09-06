@@ -13,7 +13,7 @@ const findGcd = (num1, num2) => {
     }
     biggestDivisor -= 1;
   }
-  return biggestDivisor;
+  return String(biggestDivisor);
 };
 
 const getCorrectAnswer = () => {
