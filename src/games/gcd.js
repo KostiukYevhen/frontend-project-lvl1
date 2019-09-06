@@ -13,7 +13,7 @@ const findGcd = (num1, num2) => {
     }
     biggestDivisor -= 1;
   }
-  return String(biggestDivisor);
+  return biggestDivisor;
 };
 
 const getCorrectAnswer = () => {
@@ -21,7 +21,7 @@ const getCorrectAnswer = () => {
   const secondRandomInteger = getRandomInteger();
   const question = `${firstRandomInteger} ${secondRandomInteger}`;
   const correctAnswer = findGcd(firstRandomInteger, secondRandomInteger);
-  return cons(question, correctAnswer);
+  return cons(question, String(correctAnswer));
 };
 
 export default () => {
